@@ -10,13 +10,13 @@ categories: bootstrap
 alert.js的代码组织如下:
 
 #### 自调用函数 ####
-* 通过一个自调用函数，创建一个函数域空间，在该私有的域空间内定义Alert
-* 传入jQuery参数，是为了得到一个函数局部的$符，来标记jQuery。因为全局的$符标记的不一定是jQuery, 有可能其他的js库也定义了$符。
-* function前面的+号，是为了让js解析器将+号后面的部分识别为expression, 这样才可以进行函数调用。可以用其他符号，比如 - , ! 等等. 参考[自调用函数定义][so-1]
 ```javascript
 +function ($) {
 }(jQuery);
 ```
+* 通过一个自调用函数，创建一个函数域空间，在该私有的域空间内定义Alert
+* 传入jQuery参数，是为了得到一个函数局部的$符，来标记jQuery。因为全局的$符标记的不一定是jQuery, 有可能其他的js库也定义了$符。
+* function前面的+号，是为了让js解析器将+号后面的部分识别为expression, 这样才可以进行函数调用。可以用其他符号，比如 - , ! 等等. 参考[自调用函数定义][so-1]
 
 #### 定义Alert ####
 ```javascript
@@ -66,13 +66,13 @@ $.fn.alert.noConflict = function () {
 * 可以通过调用`$.fn.alert.noConflict()`来恢复之前的$.fn.alert定义
 
 #### 绑定Alert相关事件 ####
-* document上绑定click事件的hook函数: Alert.prototyp.close. 
-* click.bs.alert.data-api事件, 作用就是我们可以在取消某些事件处理注册的时候，不会影响其它已经注册的事件处理程序。参考[jquery event namespace][jquery-1]
 ```javascript
 // ALERT DATA-API
 // ==============
 $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
 ```
+* document上绑定click事件的hook函数: Alert.prototyp.close. 
+* click.bs.alert.data-api事件, 作用就是我们可以在取消某些事件处理注册的时候，不会影响其它已经注册的事件处理程序。参考[jquery event namespace][jquery-1]
 
 [alert-js]: https://raw.githubusercontent.com/twbs/bootstrap/v3-dev/js/alert.js
 [so-1]: http://stackoverflow.com/questions/13341698/javascript-plus-sign-in-front-of-function-name

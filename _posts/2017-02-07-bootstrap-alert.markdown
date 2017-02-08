@@ -67,7 +67,7 @@ $.fn.alert.noConflict = function () {
 
 #### 绑定Alert相关事件 ####
 * document上绑定click事件的hook函数: Alert.prototyp.close. 
-* click.bs.alert.data-api事件, 作用就是我们可以在取消某些事件处理注册的时候，不会影响其它已经注册的事件处理程序。参考[jquery event namespace][jquery-1]。
+* click.bs.alert.data-api事件, 作用就是我们可以在取消某些事件处理注册的时候，不会影响其它已经注册的事件处理程序。参考[jquery event namespace][jquery-1]
 ```javascript
 // ALERT DATA-API
 // ==============
